@@ -49,7 +49,7 @@ function custom_post_type() {
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_in_menu'          => false,
 		'menu_position'         => 5,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
@@ -64,7 +64,7 @@ function custom_post_type() {
 
     wp_enqueue_style('language-selector', plugin_dir_url(__FILE__) . 'css/language-selector.css');
 
-    wp_enqueue_script('language-selector', plugin_dir_url(__FILE__) . 'js/language-selector.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('language-selector', plugin_dir_url(__FILE__) . 'js/language-selector.js', array(), '1.0', true);
 
     include(plugin_dir_path(__FILE__) . 'language-selector-template.php');
 

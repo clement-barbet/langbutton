@@ -1,13 +1,4 @@
 const locales = ["en-GB", "cs-CZ", "es-ES", "fr-FR", "ru-RU", "hi-IN", "zh-CN"];
-const localeToUrl = {
-    'en': 'https://smartcitiesadvisor.com',
-    'cs': 'https://smartcitiesadvisor.com/cz',
-    'es': 'https://www.smartcitiesadvisor.com/smart-cities-advisor-es',
-    'fr': 'https://www.smartcitiesadvisor.com/fr',
-    'ru': 'https://www.smartcitiesadvisor.com/rus',
-    'hi': 'https://www.smartcitiesadvisor.com/in',
-    'zh': 'https://www.smartcitiesadvisor.com/cn'
-};
 
 function getFlagSrc(countryCode) {
 	return /^[A-Z]{2}$/.test(countryCode)
@@ -19,11 +10,15 @@ const dropdownBtn = document.getElementById("dropdown-btn");
 const dropdownContent = document.getElementById("dropdown-content");
 
 function setSelectedLocale(locale = null) {
-	let selectedLocale = locale;
+    let selectedLocale = locale;
 
-	if (!selectedLocale) {
-		selectedLocale = locales[0];
-	}
+    if (!selectedLocale) {
+      const browserLocales = navigator.languages;
+      selectedLocale = browserLocales.find(browserLocale => locales.includes(browserLocale));
+      if (!selectedLocale) {
+        selectedLocale = locales[0];
+      }
+    }
 
 	const intlLocale = new Intl.Locale(selectedLocale);
 	const langName = new Intl.DisplayNames([selectedLocale], {
@@ -55,16 +50,11 @@ function setSelectedLocale(locale = null) {
 	)}" />${langName}<span class="arrow-down"></span>`;
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    fetch('https://ip-api.com/json')
-        .then(response => response.json())
-        .then(data => {
-            const countryCode = data.countryCode;
-            const locale = locales.find(locale => new Intl.Locale(locale).region === countryCode);
-            setSelectedLocale(locale);
-
-            if (window.location.hostname === 'smartcitiesadvisor.com' && new Intl.Locale(locale).language !== 'en') {
-                window.location.href = localeToUrl[new Intl.Locale(locale).language];
-            }
-        });
-});
+setSelectedLocale(locales[0]);
+const browserLang = new Intl.Locale(navigator.language).language;
+for (const locale of locales) {
+	const localeLang = new Intl.Locale(locale).language;
+	if (localeLang === browserLang) {
+		setSelectedLocale(locale);
+	}
+}
