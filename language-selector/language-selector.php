@@ -66,7 +66,16 @@ function custom_post_type() {
 
     wp_enqueue_script('language-selector', plugin_dir_url(__FILE__) . 'js/language-selector.js', array(), '1.0', true);
 
-    include(plugin_dir_path(__FILE__) . 'language-selector-template.php');
-
 }
 add_action( 'init', 'custom_post_type', 0 );
+
+function add_dropdown_to_body_start() {
+    ?>
+    <div class="dropdown">
+        <button class="dropbtn"><img src="<?php echo plugins_url('img/language.png', __FILE__); ?>" alt="language" width="25px"></button>
+        <div class="dropdown-content" id="dropdown-content"></div>
+    </div>
+    <?php
+}
+add_action('wp_body_open', 'add_dropdown_to_body_start');
+?>
