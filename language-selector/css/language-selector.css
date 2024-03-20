@@ -1,6 +1,6 @@
 .dropdown {
   position: fixed;
-  top: 50px;
+  top: 4.5px;
   right: 25px;
   display: inline-block;
   z-index: 1000;
