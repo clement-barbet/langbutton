@@ -4,7 +4,7 @@
  * Plugin name: Language Selector Menu
  * Description: A simple plugin to add a language selector menu to the website.
  * Author: Leire Lasa
- * Version: 1.1
+ * Version: 1.2
  * Text Domain: language-selector-menu
  */
 
