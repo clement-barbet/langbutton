@@ -1,6 +1,6 @@
 .dropdown {
-  position: fixed;
-  top: 4.5px;
+  position: absolute;
+  top: 0.9px;
   right: 25px;
   display: inline-block;
   z-index: 1000;
@@ -26,7 +26,7 @@
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 .dropdown:hover .dropbtn {
-  background-color: #e29600;
+  background-color: #0085C6;
 }
 
 .dropbtn, .dropbtn:active, .dropbtn:focus {
@@ -44,6 +44,6 @@
 
 @media (max-width: 1024px) {
   .dropdown {
-      top: 10.375px !important;
+      top: 9.9px !important;
   }
 }
