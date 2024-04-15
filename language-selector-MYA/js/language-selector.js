@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		cz: "cs",
 		es: "es",
 		fr: "fr",
-		rus: "ru",
+		ru: "ru",
 		in: "hi",
 		cn: "zh",
 	};
