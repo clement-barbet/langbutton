@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		hi: "हिन्दी",
 		zh: "中文",
 	};
-    const urlToLang = {
-        '': 'en',
-        'cz': 'cs',
-        'es': 'es',
-        'fr': 'fr',
-        'rus': 'ru',
-        'in': 'hi',
-        'cn': 'zh',
-    };
+	const urlToLang = {
+		"": "en",
+		cz: "cs",
+		es: "es",
+		fr: "fr",
+		rus: "ru",
+		in: "hi",
+		cn: "zh",
+	};
 	const localeToUrl = {
 		en: "https://smartcitiesadvisor.com",
 		cs: "https://smartcitiesadvisor.com/cz",
@@ -70,6 +70,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			dropdownContent.style.display = "none";
 		} else {
 			dropdownContent.style.display = "block";
+		}
+	});
+
+	document.addEventListener("click", function (event) {
+		const isClickInsideContent = dropdownContent.contains(event.target);
+		const isClickInsideButton = dropbtn.contains(event.target);
+
+		if (!isClickInsideContent && !isClickInsideButton) {
+			dropdownContent.style.display = "none";
 		}
 	});
 });
